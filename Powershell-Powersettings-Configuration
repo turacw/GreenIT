@@ -1,0 +1,38 @@
+#Aşağıdaki Powershell scripti ile ilgili sunuculardaki power planlar listelenir. ve Powerplan ayarları balanced ve High Performance için set edilebilir.
+
+
+#1- Powersettings'ini çekeceğim bilgisayarları $computers isimli bir değişkene atıyorum
+
+$computers = "DC01","CORE-ADC01"
+
+
+
+#2- Aşağıdaki komut ile uzak bilgisayarlarda bilgisayar adını da getirerek Power Settings görebilirim. IsActive kısmı True olan plan aktif durumdadır.
+Invoke-Command -ScriptBlock { Get-WmiObject -Namespace root\cimv2\power -Class win32_powerplan |Select-Object PsComputerName,Elementname, Isactive |ft } -ComputerName $computers 
+
+
+#3 Foreach döngüsüyle tüm bilgisayarların powerplanlarını değiştirme
+
+foreach ($i in $computers)
+
+{
+#Aşağıdaki Komutla bilgisayar adı görmeden $computers altındaki tüm bilgisayarların power planlarını listeleyebilirim.
+powercfg /list
+
+
+<# FOR HIGH PERFORMANCE POWER POWER PLAN
+
+#Aşağıdaki komut ile tüm bilgisayarların power planlarını "High Performance Power Plan" olarak set ederim
+#Powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+
+#>
+
+<#
+< # FOR BALANCED POWER POWER PLAN
+#Aşağıdaki komut ile tüm bilgisayarların power planlarını "Balanced" olarak set ederim.
+Powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e 
+
+#>
+
+}
+
