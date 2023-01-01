@@ -1,4 +1,27 @@
+<# Windows Server altında 3 tip güç seçeneği bulunur,
+Bunlar
+1- High Performance
+2- Balance
+3- Power Saver
+Bu güç planları, aslında alt kırılım üzerindeki güç planların gruplandırılmış halidir. Bu sayede ayarları tek tek düzenleme yerine, kullanımı kolay bir şekilde ortak ayar grupları arasında geçiş yapmayı amaçlar. 
+
+Örneğin: 
+
+1- High Performance : High performans modu, CPU'nun kullanılmadığı zaman hızını düşürmez ve çoğunlukla daha yüksek hızda çalışır. 
+Ayrıca ekran parlaklığını artırır. Wi-Fi veya disk sürücü gibi diğer bileşenler de güç tasarrufu modunda olmayabilir.
+
+
+2- Balanced, bilgisayarınızın gerektiği zaman CPU'nun hızını otomatik olarak artırır ve gerekmediği zaman azaltır. 
+Bu, varsayılan ayardır ve çoğu zaman yeterli olmalıdır.
+
+3-Power Saver: Güç Tasarrufu, CPU'nun hızını her zaman azaltarak ve parlaklığı azaltarak güç tasarrufu sağlamaya çalışır.
+
+
+
+
 #Aşağıdaki Powershell scripti ile ilgili sunuculardaki power planlar listelenir. ve Powerplan ayarları balanced ve High Performance için set edilebilir.
+
+
 
 
 #1- Powersettings'ini çekeceğim bilgisayarları $computers isimli bir değişkene atıyorum
